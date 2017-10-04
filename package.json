@@ -1,0 +1,14 @@
+{
+  "name": "tutorial",
+  "version": "1.0.0",
+  "description": "Tutorial for MongoDB Stitch",
+  "main": "data_generator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Drew DiPalma",
+  "license": "ISC",
+  "dependencies": {
+    "chance": "^1.0.11"
+  }
+}
