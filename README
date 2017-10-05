@@ -1,0 +1,14 @@
+MongoDB Stitch Tutorial
+=======================
+
+This tutorial will walk you through how to get up and running with MongoDB
+Stitch's JavaScript SDK. Specifically, you'll be building a realtime charting
+application.
+
+Setting Up Stitch
+=================
+
+First, you're going to need to create a MongoDB Cloud account. You can do this
+by visiting <INSERT LINK FOR STITCH REGISTRATION HERE>.
+
+
