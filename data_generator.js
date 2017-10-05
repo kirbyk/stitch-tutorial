@@ -1,15 +1,10 @@
-// Set-up the MongoDB connection
-const stitch = require("mongodb-stitch");
-const client = new stitch.StitchClient("charttime-obqtc");
-const db = client.service("mongodb", "mongodb-atlas").db("SalesReporting");
-const salesData = db.collection("Receipts");
+const stitch = require("mongodb-stitch"); // MongoDB Stitch SDK
+const chance = require("chance").Chance(); // Package for random variables
 
-// Package for random variables
-const chance = require("chance").Chance();
 
 // Seeds for the random data
-const loc = ["Store 1", "Store 2", "Store 3"];
-const tops = [
+const LOCATIONS = ["Store 1", "Store 2", "Store 3"];
+const TOPPINGS = [
   "Pepperoni",
   "Mushrooms",
   "Onions",
@@ -21,38 +16,43 @@ const tops = [
   "Pineapple",
   "Spinach"
 ];
-const size = ["Personal", "Small", "Medium", "Large", "X-tra Large"];
+const SIZES = ["Personal", "Small", "Medium", "Large", "X-tra Large"];
+
+
+// // Set-up the MongoDB connection
+const client = new stitch.StitchClient("charting-zxsyw");
+const db = client.service("mongodb", "mongodb-atlas").db("sales-reporting");
+
+// Authenticate anonymously and then begin to load data
+// client.login().then(generateReceipts);
+
+// Alternatively, use the API Key to load data more securely
+client
+  .authenticate(
+    "apiKey",
+    "oX2BkSYsv9aEnbOwgtFRxi6Up5E3HQCIClcapRNPPYPBS3Vllb0KFB3580yrch5X"
+  )
+  .then(generateReceipts);
 
 // Send sample data while within this loop
-function datagen() {
+function generateReceipts() {
   // Create a random transaction
-  const doc = {
+  const receipt = {
     timestamp: Date.now(),
     customerName: chance.name({ nationality: "en" }),
     cardNumber: chance.cc(),
-    location: chance.weighted(loc, [2, 5, 3]),
-    size: chance.weighted(size, [1, 2, 3, 4, 5]),
-    toppings: chance.weighted(tops, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
+    location: chance.weighted(LOCATIONS, [2, 5, 3]),
+    size: chance.weighted(SIZES, [1, 2, 3, 4, 5]),
+    toppings: chance.weighted(TOPPINGS, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]),
     total: parseFloat(chance.normal({ mean: 20, dev: 3 }).toFixed(2))
   };
 
   // Print to the console
-  console.log(doc);
+  console.log(receipt);
 
   // Insert into MongoDB
-  salesData.insertOne(doc).then(
+  db.collection("receipts").insertOne(receipt).then(
     // Wait for a random amount of time
-    setTimeout(datagen, chance.integer({ min: 0, max: 3000 }))
+    setTimeout(generateReceipts, chance.integer({ min: 0, max: 3000 }))
   );
 }
-
-// Authenticate anonymously and then begin to load data
-// client.login().then(datagen);
-
-// Alternatively Use the API Key to load data more securely
-client
-  .authenticate(
-    "apiKey",
-    "kVItuPn0owg58xK31ebs0Frlt2Rq9Cu66bcDGqCDury6p1NiAdVM1I2f9654HgXy"
-  )
-  .then(datagen);
