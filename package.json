@@ -10,6 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "chance": "^1.0.11",
-    "mongodb-stitch": "^1.0.1"
+    "mongodb-stitch": "^1.2.0"
   }
 }

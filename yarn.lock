@@ -427,7 +427,7 @@ babel-plugin-version-transform@^1.0.0:
     babel-preset-es2015 "^6.6.0"
     rimraf "^2.5.2"
 
-babel-polyfill@^6.26.0:
+babel-polyfill@^6.23.0, babel-polyfill@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-polyfill/-/babel-polyfill-6.26.0.tgz#379937abc67d7895970adc621f284cd966cf2153"
   dependencies:
@@ -1053,6 +1053,11 @@ jsprim@^1.2.2:
     json-schema "0.2.3"
     verror "1.10.0"
 
+jwt-decode@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-2.2.0.tgz#7d86bd56679f58ce6a84704a657dd392bba81a79"
+  integrity sha512-86GgN2vzfUu7m9Wcj63iUkuDzFNYFVmjeDm2GzWpUk+opB0pEpMsw6ePCMrhYkumz2C1ihqtZzOMAg7FiXcNoQ==
+
 kind-of@^3.0.2:
   version "3.2.2"
   resolved "https://registry.yarnpkg.com/kind-of/-/kind-of-3.2.2.tgz#31ea21a734bab9bbb0f32466d893aea51e4a3c64"
@@ -1127,14 +1132,17 @@ mongodb-extjson@^1.0.5:
   version "1.0.5"
   resolved "https://registry.yarnpkg.com/mongodb-extjson/-/mongodb-extjson-1.0.5.tgz#3faaa954883f948b65629ce9f475942810f23589"
 
-mongodb-stitch@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/mongodb-stitch/-/mongodb-stitch-1.0.1.tgz#6c19b33a4f4068103e788f9e01e9f6cc7af90021"
+mongodb-stitch@^1.2.0:
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/mongodb-stitch/-/mongodb-stitch-1.2.0.tgz#0862de3421a353cc1122c7f2f3389258565a66be"
+  integrity sha512-38jIFUHSA9dpOLSuJpD8oy6LUWflgq2xUzbmDnzjp+23UgPiCh+jGM64wcE77on4BbmyBWCBF8IsqK9EVvCyKw==
   dependencies:
     Base64 "^1.0.1"
     babel-plugin-version-transform "^1.0.0"
+    babel-polyfill "^6.23.0"
     detect-browser "^1.7.0"
     fetch-everywhere "^1.0.5"
+    jwt-decode "^2.2.0"
     mongodb-extjson "^1.0.5"
     query-string "^4.3.4"
 
