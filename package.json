@@ -4,12 +4,16 @@
   "description": "Tutorial for MongoDB Stitch",
   "main": "data_generator.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "yarn run snyk-protect",
+    "snyk-protect": "snyk-protect"
   },
   "author": "Drew DiPalma",
   "license": "ISC",
   "dependencies": {
     "chance": "^1.0.11",
-    "mongodb-stitch": "^1.0.1"
-  }
+    "mongodb-stitch": "^1.0.1",
+    "@snyk/protect": "latest"
+  },
+  "snyk": true
 }
